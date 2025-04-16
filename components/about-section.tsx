@@ -17,10 +17,10 @@ export default function AboutSection() {
             transition={{ duration: 0.5 }}
           >
             <div className="relative">
-              <div className="aspect-square rounded-full overflow-hidden border-8 border-purple-100 dark:border-purple-900/30 shadow-xl">
+              <div className="aspect-square rounded-full overflow-hidden border-8 border-teal-100 dark:border-teal-900/30 shadow-xl">
                 <Image
-                  src="/placeholder.jpg"
-                  alt="Our team"
+                  src="/sargassum-team.jpg"
+                  alt="Sargassum team"
                   width={1050}
                   height={1000}
                   className="object-cover"
@@ -28,8 +28,8 @@ export default function AboutSection() {
               </div>
 
               {/* Circular design elements */}
-              <div className="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-pink-100 dark:bg-pink-900/20"></div>
-              <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-purple-100 dark:bg-purple-900/20"></div>
+              <div className="absolute -top-10 -left-10 w-32 h-32 rounded-full bg-emerald-100 dark:bg-emerald-900/20"></div>
+              <div className="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-teal-100 dark:bg-teal-900/20"></div>
             </div>
           </motion.div>
 
@@ -41,32 +41,29 @@ export default function AboutSection() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-6">
-              We're a team of storytellers, artists, and AI researchers passionate about democratizing creativity. Our
-              mission is to empower everyone to create engaging stories through the power of artificial intelligence.
+              We're creating sustainable, interactive toys that promote environmental awareness and reduce plastic consumption. Our mission is to foster a harmonious relationship between children and our planet through meaningful play.
             </p>
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-              We believe that storytelling is a fundamental human experience that connects us across cultures and
-              generations. By combining cutting-edge AI with intuitive design, we're making it easier than ever to craft
-              compelling narratives that resonate with audiences.
+              By combining eco-friendly materials with engaging storytelling and educational content, we're making it easier for environmentally-conscious parents to provide their children with toys that inspire creativity while teaching important lessons about sustainability.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
               <div className="text-center">
-                <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">50K+</div>
-                <div className="text-slate-600 dark:text-slate-400">Active Users</div>
+                <div className="text-4xl font-bold text-teal-600 dark:text-teal-400 mb-2">100%</div>
+                <div className="text-slate-600 dark:text-slate-400">Sustainable Materials</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">100K+</div>
-                <div className="text-slate-600 dark:text-slate-400">Stories Created</div>
+                <div className="text-4xl font-bold text-teal-600 dark:text-teal-400 mb-2">50+</div>
+                <div className="text-slate-600 dark:text-slate-400">Educational Stories</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">25+</div>
-                <div className="text-slate-600 dark:text-slate-400">Countries</div>
+                <div className="text-4xl font-bold text-teal-600 dark:text-teal-400 mb-2">0</div>
+                <div className="text-slate-600 dark:text-slate-400">Plastic Waste</div>
               </div>
             </div>
 
-            <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600">
-              Meet Our Team
+            <Button className="bg-gradient-to-r from-teal-600 to-emerald-500 hover:from-teal-700 hover:to-emerald-600">
+              Learn More About Us
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </motion.div>

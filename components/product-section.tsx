@@ -1,126 +1,203 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useRef } from "react"
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Image from "next/image"
-import { ArrowRight, BookOpen, ImageIcon, Music, Sparkles } from "lucide-react"
+import { ArrowRight, Leaf, BookOpen, Heart, Sparkles, Palmtree, Fish, Recycle } from "lucide-react"
 
 export default function ProductSection() {
-  const [activeTab, setActiveTab] = useState("text")
+  const [activeTab, setActiveTab] = useState("toys")
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null)
+  const sectionRef = useRef<HTMLElement>(null)
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const scale = useSpring(useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]), {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   const features = {
-    text: [
-      "Branching storylines that adapt to reader choices",
-      "Character development and dialogue generation",
-      "Plot suggestions and story structure assistance",
+    toys: [
+      "Eco-friendly materials sourced from sustainable suppliers",
+      "Interactive toys that promote environmental awareness",
+      "Durable design that lasts through generations",
     ],
-    image: [
-      "Character design and customization",
-      "Scene generation with consistent style",
-      "Comic panel layout and composition",
+    stories: [
+      "Educational stories about marine ecosystems",
+      "Interactive storytelling with environmental themes",
+      "Family-friendly content that sparks meaningful conversations",
     ],
-    audio: [
-      "Character voice generation with emotion",
-      "Ambient sound effects for scene setting",
-      "Thematic music that adapts to the narrative",
+    impact: [
+      "Support for marine conservation efforts",
+      "Reduction in plastic waste through sustainable materials",
+      "Community initiatives for environmental education",
     ],
   }
 
   return (
-    <section id="product" className="py-20 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
-      {/* Animated background elements */}
+    <section id="product" ref={sectionRef} className="py-20 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
+      {/* Animated background elements with parallax */}
       <motion.div
         className="absolute top-0 left-0 w-full h-full pointer-events-none"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
+        style={{ y }}
       >
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl" />
+        <motion.div 
+          className="absolute top-0 left-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"
+          animate={{ 
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ 
+            duration: 10,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+        />
+        <motion.div 
+          className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
+          animate={{ 
+            x: [0, -50, 0],
+            y: [0, -30, 0],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{ 
+            duration: 10,
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: 1
+          }}
+        />
       </motion.div>
 
-      <div className="container mx-auto px-4 relative">
+      <motion.div 
+        className="container mx-auto px-4 relative"
+        style={{ opacity, scale }}
+      >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: false, margin: "-100px" }}
+          transition={{ duration: 0.7 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-300 text-sm font-medium mb-6"
+            className="inline-flex items-center px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-300 text-sm font-medium mb-6"
           >
             <Sparkles className="h-4 w-4 mr-2" />
-            <span>Powerful Features</span>
+            <span>Sustainable Products</span>
           </motion.div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 bg-clip-text text-transparent">
-            Multi-Modal Storytelling
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
-            Create immersive stories that combine text, images, and audio for a truly engaging experience.
-          </p>
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-teal-600 via-emerald-500 to-blue-400 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            Eco-Friendly Toys for a Better Tomorrow
+          </motion.h2>
+          <motion.p 
+            className="text-lg text-slate-600 dark:text-slate-400"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            Discover our collection of sustainable toys that combine fun, education, and environmental consciousness.
+          </motion.p>
         </motion.div>
 
-        <Tabs defaultValue="text" className="max-w-5xl mx-auto" onValueChange={setActiveTab}>
-          <TabsList className="grid grid-cols-3 max-w-md mx-auto mb-12">
-            {[
-              { value: "text", icon: BookOpen, label: "Text" },
-              { value: "image", icon: ImageIcon, label: "Image" },
-              { value: "audio", icon: Music, label: "Audio" },
-            ].map((tab) => (
-              <motion.div
-                key={tab.value}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <TabsTrigger
-                  value={tab.value}
-                  className="data-[state=active]:bg-purple-100 data-[state=active]:text-purple-700 dark:data-[state=active]:bg-purple-900/30 dark:data-[state=active]:text-purple-300"
+        <Tabs defaultValue="toys" className="max-w-5xl mx-auto" onValueChange={setActiveTab}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <TabsList className="grid grid-cols-3 max-w-md mx-auto mb-12">
+              {[
+                { value: "toys", icon: Leaf, label: "Toys" },
+                { value: "stories", icon: BookOpen, label: "Stories" },
+                { value: "impact", icon: Heart, label: "Impact" },
+              ].map((tab) => (
+                <motion.div
+                  key={tab.value}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <tab.icon className="h-4 w-4 mr-2" />
-                  {tab.label}
-                </TabsTrigger>
-              </motion.div>
-            ))}
-          </TabsList>
+                  <TabsTrigger
+                    value={tab.value}
+                    className="data-[state=active]:bg-teal-100 data-[state=active]:text-teal-700 dark:data-[state=active]:bg-teal-900/30 dark:data-[state=active]:text-teal-300"
+                  >
+                    <tab.icon className="h-4 w-4 mr-2" />
+                    {tab.label}
+                  </TabsTrigger>
+                </motion.div>
+              ))}
+            </TabsList>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               key={activeTab + "-content"}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
               className="order-2 lg:order-1"
             >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: 0, y: -30 }}
+                  transition={{ duration: 0.4, type: "spring", stiffness: 100 }}
                 >
-                  <TabsContent value="text" className="mt-0">
-                    <h3 className="text-2xl font-bold mb-4">Dynamic Narrative Generation</h3>
-                    <p className="text-slate-600 dark:text-slate-400 mb-6">
-                      Our AI can generate compelling narratives based on your input, helping you overcome writer's block and
-                      explore new creative directions.
-                    </p>
+                  <TabsContent value="toys" className="mt-0">
+                    <motion.h3 
+                      className="text-2xl font-bold mb-4"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                    >
+                      Sustainable Toy Collection
+                    </motion.h3>
+                    <motion.p 
+                      className="text-slate-600 dark:text-slate-400 mb-6"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.2 }}
+                    >
+                      Our toys are crafted from eco-friendly materials, designed to inspire creativity while teaching
+                      important lessons about environmental conservation.
+                    </motion.p>
                     <ul className="space-y-3 mb-8">
-                      {features.text.map((feature, index) => (
+                      {features.toys.map((feature, index) => (
                         <motion.li
                           key={index}
                           className="flex items-start"
                           onHoverStart={() => setHoveredFeature(index)}
                           onHoverEnd={() => setHoveredFeature(null)}
                           whileHover={{ x: 10 }}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
                         >
                           <motion.div
                             className="mr-3 p-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
@@ -138,14 +215,20 @@ export default function ProductSection() {
                         </motion.li>
                       ))}
                     </ul>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 relative overflow-hidden group">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }} 
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.6 }}
+                    >
+                      <Button className="bg-gradient-to-r from-teal-600 to-emerald-500 hover:from-teal-700 hover:to-emerald-600 relative overflow-hidden group">
                         <span className="relative z-10 flex items-center">
-                          Try Text Generation
+                          Explore Our Toys
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </span>
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700"
+                          className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-700"
                           initial={{ x: "-100%" }}
                           whileHover={{ x: 0 }}
                           transition={{ duration: 0.3 }}
@@ -154,20 +237,35 @@ export default function ProductSection() {
                     </motion.div>
                   </TabsContent>
 
-                  <TabsContent value="image" className="mt-0">
-                    <h3 className="text-2xl font-bold mb-4">Visual Storytelling</h3>
-                    <p className="text-slate-600 dark:text-slate-400 mb-6">
-                      Transform your ideas into stunning visuals with our AI image generation. Create characters, scenes,
-                      and entire comic panels with simple text prompts.
-                    </p>
+                  <TabsContent value="stories" className="mt-0">
+                    <motion.h3 
+                      className="text-2xl font-bold mb-4"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                    >
+                      Educational Stories
+                    </motion.h3>
+                    <motion.p 
+                      className="text-slate-600 dark:text-slate-400 mb-6"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.2 }}
+                    >
+                      Each toy comes with engaging stories that teach children about marine ecosystems and environmental
+                      conservation through fun and interactive narratives.
+                    </motion.p>
                     <ul className="space-y-3 mb-8">
-                      {features.image.map((feature, index) => (
+                      {features.stories.map((feature, index) => (
                         <motion.li
                           key={index}
                           className="flex items-start"
                           onHoverStart={() => setHoveredFeature(index)}
                           onHoverEnd={() => setHoveredFeature(null)}
                           whileHover={{ x: 10 }}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
                         >
                           <motion.div
                             className="mr-3 p-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
@@ -185,14 +283,20 @@ export default function ProductSection() {
                         </motion.li>
                       ))}
                     </ul>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 relative overflow-hidden group">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }} 
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.6 }}
+                    >
+                      <Button className="bg-gradient-to-r from-teal-600 to-emerald-500 hover:from-teal-700 hover:to-emerald-600 relative overflow-hidden group">
                         <span className="relative z-10 flex items-center">
-                          Try Image Generation
+                          Read Our Stories
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </span>
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700"
+                          className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-700"
                           initial={{ x: "-100%" }}
                           whileHover={{ x: 0 }}
                           transition={{ duration: 0.3 }}
@@ -201,20 +305,35 @@ export default function ProductSection() {
                     </motion.div>
                   </TabsContent>
 
-                  <TabsContent value="audio" className="mt-0">
-                    <h3 className="text-2xl font-bold mb-4">Immersive Audio</h3>
-                    <p className="text-slate-600 dark:text-slate-400 mb-6">
-                      Add another dimension to your stories with AI-generated audio. Create character voices, ambient
-                      sounds, and background music that enhance the storytelling experience.
-                    </p>
+                  <TabsContent value="impact" className="mt-0">
+                    <motion.h3 
+                      className="text-2xl font-bold mb-4"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                    >
+                      Environmental Impact
+                    </motion.h3>
+                    <motion.p 
+                      className="text-slate-600 dark:text-slate-400 mb-6"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.2 }}
+                    >
+                      Every purchase contributes to marine conservation efforts and helps reduce plastic waste in our
+                      oceans through sustainable practices and materials.
+                    </motion.p>
                     <ul className="space-y-3 mb-8">
-                      {features.audio.map((feature, index) => (
+                      {features.impact.map((feature, index) => (
                         <motion.li
                           key={index}
                           className="flex items-start"
                           onHoverStart={() => setHoveredFeature(index)}
                           onHoverEnd={() => setHoveredFeature(null)}
                           whileHover={{ x: 10 }}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
                         >
                           <motion.div
                             className="mr-3 p-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400"
@@ -232,14 +351,20 @@ export default function ProductSection() {
                         </motion.li>
                       ))}
                     </ul>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 relative overflow-hidden group">
+                    <motion.div 
+                      whileHover={{ scale: 1.05 }} 
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: 0.6 }}
+                    >
+                      <Button className="bg-gradient-to-r from-teal-600 to-emerald-500 hover:from-teal-700 hover:to-emerald-600 relative overflow-hidden group">
                         <span className="relative z-10 flex items-center">
-                          Try Audio Generation
+                          Learn About Our Impact
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </span>
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700"
+                          className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-700"
                           initial={{ x: "-100%" }}
                           whileHover={{ x: 0 }}
                           transition={{ duration: 0.3 }}
@@ -252,53 +377,88 @@ export default function ProductSection() {
             </motion.div>
 
             <motion.div
-              key={activeTab + "-image"}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
               className="order-1 lg:order-2"
             >
-              <div className="relative rounded-xl overflow-hidden shadow-xl">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeTab}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
+              <motion.div 
+                className="relative"
+                whileInView={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.5 }
+                }}
+                viewport={{ once: false, margin: "-100px" }}
+              >
+                <motion.div 
+                  className="aspect-square rounded-2xl overflow-hidden shadow-2xl"
+                  whileHover={{ scale: 1.03 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Image
+                    src="/sargassum-product.jpg"
+                    alt="Sargassum sustainable toys"
+                    width={1500}
+                    height={1500}
+                    className="object-cover"
+                  />
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-tr from-teal-600/20 to-transparent mix-blend-overlay"
+                    whileHover={{ opacity: 0.8 }}
                     transition={{ duration: 0.3 }}
-                  >
-                    <Image
-                      src={`/placeholder.jpg?height=600&width=800&type=${activeTab}`}
-                      alt={`${activeTab} generation`}
-                      width={800}
-                      height={600}
-                      className="object-cover"
-                    />
-                  </motion.div>
-                </AnimatePresence>
-                <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-transparent"></div>
-                
-                {/* Interactive elements overlay */}
+                  ></motion.div>
+                </motion.div>
+
+                {/* Floating product elements with enhanced animations */}
                 <motion.div
-                  className="absolute inset-0 pointer-events-none"
-                  animate={{
-                    background: [
-                      "radial-gradient(circle at 0% 0%, rgba(255,255,255,0.1) 0%, transparent 50%)",
-                      "radial-gradient(circle at 100% 100%, rgba(255,255,255,0.1) 0%, transparent 50%)",
-                      "radial-gradient(circle at 0% 0%, rgba(255,255,255,0.1) 0%, transparent 50%)",
-                    ],
+                  className="absolute -top-10 -right-10 w-32 h-32 rounded-lg shadow-lg overflow-hidden border-4 border-white dark:border-slate-800"
+                  animate={{ 
+                    y: [0, -15, 0],
+                    rotate: [0, 5, 0],
+                    scale: [1, 1.05, 1]
                   }}
-                  transition={{
+                  transition={{ 
                     duration: 5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "easeInOut"
                   }}
-                />
-              </div>
+                  whileHover={{ scale: 1.15, rotate: 15, zIndex: 10 }}
+                >
+                  <motion.div 
+                    className="w-full h-full bg-gradient-to-br from-teal-400 to-emerald-600 flex items-center justify-center"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Palmtree className="w-8 h-8 text-white" />
+                  </motion.div>
+                </motion.div>
+
+                <motion.div
+                  className="absolute -bottom-5 -left-5 w-24 h-24 rounded-lg shadow-lg overflow-hidden border-4 border-white dark:border-slate-800"
+                  animate={{ 
+                    y: [0, 15, 0],
+                    rotate: [0, -5, 0],
+                    scale: [1, 1.05, 1]
+                  }}
+                  transition={{ 
+                    duration: 4,
+                    repeat: Number.POSITIVE_INFINITY,
+                    delay: 1,
+                    ease: "easeInOut"
+                  }}
+                  whileHover={{ scale: 1.15, rotate: -15, zIndex: 10 }}
+                >
+                  <motion.div 
+                    className="w-full h-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center"
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <Fish className="w-8 h-8 text-white" />
+                  </motion.div>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </Tabs>
-      </div>
+      </motion.div>
     </section>
   )
 }
