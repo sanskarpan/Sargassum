@@ -13,10 +13,10 @@ export default function HeroSection() {
   const springY = useSpring(y, { stiffness: 100, damping: 30 })
   
   const stories = [
-    "Sustainable toys for a better tomorrow",
-    "Promoting environmental awareness through play",
-    "Interactive storytelling for young minds",
-    "Building connections with our planet",
+    "Interactive storytelling for sustainable futures",
+    "AI-powered stories that connect generations",
+    "Marine ecosystem adventures for young minds",
+    "Fostering family bonds through play and learning",
   ]
 
   useEffect(() => {
@@ -37,22 +37,31 @@ export default function HeroSection() {
             className="text-center lg:text-left"
           >
             <motion.div 
-              className="inline-flex items-center px-3 py-1 rounded-full bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-300 text-sm font-medium mb-6"
+              className="inline-flex items-center px-3 py-1 rounded-full bg-purple-100/10 dark:bg-purple-900/10 text-purple-600 dark:text-purple-400 text-sm font-medium mb-6"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <BookOpen className="h-4 w-4 mr-2" />
-              <span>Sustainable Toy Brand</span>
+              <span>Sustainable Toy Brand with Adaptive AI storytelling </span>
             </motion.div>
 
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-600 via-emerald-500 to-blue-400 bg-clip-text text-transparent"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Play, Learn, and Protect Our Planet
+              Interactive Stories for a Sustainable Future
             </motion.h1>
+
+            <motion.p
+              className="text-lg text-slate-300 dark:text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              Join us in creating meaningful connections through sustainable toys and AI-driven storytelling. Designed for environmentally-conscious families who want to make a difference.
+            </motion.p>
 
             <div className="h-12 mb-6">
               <motion.p
@@ -61,7 +70,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="text-xl text-slate-600 dark:text-slate-300"
+                className="text-xl text-slate-300 dark:text-slate-300"
               >
                 {stories[currentStory]}
               </motion.p>
@@ -71,14 +80,14 @@ export default function HeroSection() {
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-teal-600 to-emerald-500 hover:from-teal-700 hover:to-emerald-600 relative overflow-hidden group"
+                  className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 relative overflow-hidden group"
                 >
                   <span className="relative z-10 flex items-center">
-                    Explore Our Toys
+                    Start Your Story
                     <PenTool className="ml-2 h-4 w-4 transition-transform group-hover:rotate-12" />
                   </span>
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-700"
+                    className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700"
                     initial={{ x: "-100%" }}
                     whileHover={{ x: 0 }}
                     transition={{ duration: 0.3 }}
@@ -86,9 +95,9 @@ export default function HeroSection() {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="outline" className="border-slate-300 dark:border-slate-700">
+                <Button size="lg" variant="outline" className="border-slate-700 dark:border-slate-700 text-slate-300">
                   <PlayCircle className="mr-2 h-4 w-4" />
-                  Watch Our Story
+                  Explore Our Vision
                 </Button>
               </motion.div>
             </div>
