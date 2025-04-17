@@ -37,7 +37,7 @@ export default function HeroSection() {
             className="text-center lg:text-left max-w-2xl mx-auto lg:mx-0"
           >
             <motion.div 
-              className="inline-flex items-center px-4 py-1.5 rounded-full bg-purple-100/10 dark:bg-purple-900/10 text-purple-600 dark:text-purple-400 text-sm font-medium mb-8 tracking-wide"
+              className="inline-flex items-center px-4 py-1.5 rounded-full bg-teal-100/10 dark:bg-purple-900/10 text-purple-600 dark:text-purple-400 text-sm font-medium mb-8 tracking-wide"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -55,7 +55,7 @@ export default function HeroSection() {
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-slate-300 dark:text-slate-300 mb-10 leading-relaxed font-medium"
+              className="text-lg md:text-xl text-slate-700 dark:text-slate-300 mb-10 leading-relaxed font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -70,7 +70,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="text-xl md:text-2xl text-slate-300 dark:text-slate-300 font-medium tracking-tight"
+                className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-medium tracking-tight"
               >
                 {stories[currentStory]}
               </motion.p>

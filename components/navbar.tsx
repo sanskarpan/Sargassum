@@ -11,8 +11,8 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 bg-transparent dark:bg-transparent backdrop-blur-none border-b border-slate-200/10 dark:border-slate-800/10">
-      <div className="container mx-auto px-4 md:px-6 py-4">
+    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+      <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center space-x-3 group">
             <motion.div
@@ -44,7 +44,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[15px] font-medium text-slate-300 hover:text-purple-400 dark:text-slate-300 dark:hover:text-purple-400 transition-colors duration-200"
+                className="text-[15px] font-medium text-slate-700 hover:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 transition-colors duration-200"
               >
                 {item.label}
               </Link>
@@ -55,7 +55,7 @@ export default function Navbar() {
             <ThemeToggle />
             <Button 
               variant="outline" 
-              className="border-slate-700 dark:border-slate-700 text-slate-300 hover:bg-slate-800/50 font-medium px-6"
+              className="border-slate-700 dark:border-slate-700 text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800/50 font-medium px-6"
             >
               Log in
             </Button>
@@ -93,7 +93,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="block py-2 text-[15px] font-medium text-slate-300 hover:text-purple-400 dark:text-slate-300 dark:hover:text-purple-400 transition-colors"
+                className="block py-2 text-[15px] font-medium text-slate-700 hover:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
@@ -102,7 +102,7 @@ export default function Navbar() {
             <div className="pt-4 space-y-4">
               <Button 
                 variant="outline" 
-                className="w-full border-slate-700 dark:border-slate-700 text-slate-300 hover:bg-slate-800/50 font-medium"
+                className="w-full border-slate-700 dark:border-slate-700 text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800/50 font-medium"
               >
                 Log in
               </Button>

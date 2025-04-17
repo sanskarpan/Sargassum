@@ -9,7 +9,7 @@ import AnimatedCharacter from "@/components/animated-character"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 to-[#0a0118] dark:from-slate-950 dark:to-[#0a0118] selection:bg-purple-500/20 selection:text-purple-400">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
       <Navbar />
 
       <main className="relative overflow-hidden">
