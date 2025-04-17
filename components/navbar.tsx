@@ -11,65 +11,67 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-      <div className="container mx-auto px-4 py-3">
+    <nav className="sticky top-0 z-50 bg-transparent dark:bg-transparent backdrop-blur-none border-b border-slate-200/10 dark:border-slate-800/10">
+      <div className="container mx-auto px-4 md:px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-3 group">
             <motion.div
               initial={{ rotate: -10 }}
               animate={{ rotate: 10 }}
               transition={{ duration: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
+              className="relative"
             >
-              <BookOpen className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+              <BookOpen className="h-7 w-7 text-purple-600 dark:text-purple-400" />
+              <motion.div
+                className="absolute inset-0 bg-purple-400/20 dark:bg-purple-400/10 rounded-full blur-xl"
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
             </motion.div>
-            <span className="font-bold text-xl bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
+            <span className="font-bold text-2xl bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent tracking-tight group-hover:from-pink-500 group-hover:to-purple-600 transition-all duration-300">
               Sargassum
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <Link
-              href="#features"
-              className="text-slate-700 hover:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 transition-colors"
-            >
-              Features
-            </Link>
-            <Link
-              href="#product"
-              className="text-slate-700 hover:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 transition-colors"
-            >
-              Product
-            </Link>
-            <Link
-              href="#about"
-              className="text-slate-700 hover:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              href="#blog"
-              className="text-slate-700 hover:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400 transition-colors"
-            >
-              Blog
-            </Link>
+          <div className="hidden md:flex items-center space-x-8">
+            {[
+              { href: "#features", label: "Features" },
+              { href: "#product", label: "Product" },
+              { href: "#about", label: "About" },
+              { href: "#blog", label: "Blog" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-[15px] font-medium text-slate-300 hover:text-purple-400 dark:text-slate-300 dark:hover:text-purple-400 transition-colors duration-200"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
-            <Button variant="outline" className="border-slate-300 dark:border-slate-700">
+            <Button 
+              variant="outline" 
+              className="border-slate-700 dark:border-slate-700 text-slate-300 hover:bg-slate-800/50 font-medium px-6"
+            >
               Log in
             </Button>
-            <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600">
+            <Button className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 font-medium px-6">
               Get Started
             </Button>
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="flex items-center space-x-3 md:hidden">
+          <div className="flex items-center space-x-4 md:hidden">
             <ThemeToggle />
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 text-slate-700 dark:text-slate-300">
-              {isMenuOpen ? <X /> : <Menu />}
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)} 
+              className="p-2 text-slate-300 dark:text-slate-300 hover:text-purple-400 dark:hover:text-purple-400 transition-colors"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
@@ -80,41 +82,31 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden py-4 space-y-4"
+            className="md:hidden py-6 space-y-6"
           >
-            <Link
-              href="#features"
-              className="block py-2 text-slate-700 hover:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Features
-            </Link>
-            <Link
-              href="#product"
-              className="block py-2 text-slate-700 hover:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Product
-            </Link>
-            <Link
-              href="#about"
-              className="block py-2 text-slate-700 hover:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="#blog"
-              className="block py-2 text-slate-700 hover:text-purple-600 dark:text-slate-300 dark:hover:text-purple-400"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Blog
-            </Link>
-            <div className="pt-2 space-y-3">
-              <Button variant="outline" className="w-full border-slate-300 dark:border-slate-700">
+            {[
+              { href: "#features", label: "Features" },
+              { href: "#product", label: "Product" },
+              { href: "#about", label: "About" },
+              { href: "#blog", label: "Blog" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block py-2 text-[15px] font-medium text-slate-300 hover:text-purple-400 dark:text-slate-300 dark:hover:text-purple-400 transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="pt-4 space-y-4">
+              <Button 
+                variant="outline" 
+                className="w-full border-slate-700 dark:border-slate-700 text-slate-300 hover:bg-slate-800/50 font-medium"
+              >
                 Log in
               </Button>
-              <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600">
+              <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 font-medium">
                 Get Started
               </Button>
             </div>

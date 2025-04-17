@@ -27,26 +27,26 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="relative min-h-[90vh] flex items-center justify-center py-24 md:py-32 overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center lg:text-left"
+            className="text-center lg:text-left max-w-2xl mx-auto lg:mx-0"
           >
             <motion.div 
-              className="inline-flex items-center px-3 py-1 rounded-full bg-purple-100/10 dark:bg-purple-900/10 text-purple-600 dark:text-purple-400 text-sm font-medium mb-6"
+              className="inline-flex items-center px-4 py-1.5 rounded-full bg-purple-100/10 dark:bg-purple-900/10 text-purple-600 dark:text-purple-400 text-sm font-medium mb-8 tracking-wide"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <BookOpen className="h-4 w-4 mr-2" />
-              <span>Sustainable Toy Brand with Adaptive AI storytelling </span>
+              <BookOpen className="h-4 w-4 mr-2.5" />
+              <span className="text-[15px]">Sustainable Toy Brand with Adaptive AI storytelling</span>
             </motion.div>
 
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 bg-gradient-to-r from-teal-400 via-emerald-400 to-purple-400 bg-clip-text text-transparent leading-[1.1] tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -55,7 +55,7 @@ export default function HeroSection() {
             </motion.h1>
 
             <motion.p
-              className="text-lg text-slate-300 dark:text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0"
+              className="text-lg md:text-xl text-slate-300 dark:text-slate-300 mb-10 leading-relaxed font-medium"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -63,28 +63,28 @@ export default function HeroSection() {
               Join us in creating meaningful connections through sustainable toys and AI-driven storytelling. Designed for environmentally-conscious families who want to make a difference.
             </motion.p>
 
-            <div className="h-12 mb-6">
+            <div className="h-16 mb-10">
               <motion.p
                 key={currentStory}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.5 }}
-                className="text-xl text-slate-300 dark:text-slate-300"
+                className="text-xl md:text-2xl text-slate-300 dark:text-slate-300 font-medium tracking-tight"
               >
                 {stories[currentStory]}
               </motion.p>
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 relative overflow-hidden group"
+                  className="bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 relative overflow-hidden group px-8 py-6 text-lg"
                 >
-                  <span className="relative z-10 flex items-center">
+                  <span className="relative z-10 flex items-center font-medium">
                     Start Your Story
-                    <PenTool className="ml-2 h-4 w-4 transition-transform group-hover:rotate-12" />
+                    <PenTool className="ml-3 h-5 w-5 transition-transform group-hover:rotate-12" />
                   </span>
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-700"
@@ -95,8 +95,12 @@ export default function HeroSection() {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" variant="outline" className="border-slate-700 dark:border-slate-700 text-slate-300">
-                  <PlayCircle className="mr-2 h-4 w-4" />
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-slate-700 dark:border-slate-700 text-slate-300 px-8 py-6 text-lg font-medium hover:bg-slate-800/50"
+                >
+                  <PlayCircle className="mr-3 h-5 w-5" />
                   Explore Our Vision
                 </Button>
               </motion.div>
@@ -108,9 +112,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative"
+            className="relative lg:ml-6"
           >
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/sargassum-hero.jpg"
                 alt="Sustainable toys promoting environmental awareness"
