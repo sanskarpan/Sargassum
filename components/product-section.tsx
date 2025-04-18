@@ -27,19 +27,19 @@ export default function ProductSection() {
 
   const features = {
     toys: [
-      "Eco-friendly materials sourced from sustainable suppliers",
-      "Interactive toys that promote environmental awareness",
+      "Handcrafted from sustainable walnut wood in Ladakh",
+      "Traditional craftsmanship by local artisans",
       "Durable design that lasts through generations",
     ],
     stories: [
-      "Educational stories about marine ecosystems",
-      "Interactive storytelling with environmental themes",
-      "Family-friendly content that sparks meaningful conversations",
+      "Comprehensive eco-parenting guides and resources",
+      "Printable activities for environmental education",
+      "Interactive learning materials for families",
     ],
     impact: [
-      "Support for marine conservation efforts",
-      "Reduction in plastic waste through sustainable materials",
-      "Community initiatives for environmental education",
+      "Toy Swap/Return Program for circular economy",
+      "Support for local artisans and communities",
+      "Environmental education initiatives",
     ],
   }
 
@@ -110,7 +110,7 @@ export default function ProductSection() {
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Eco-Friendly Toys for a Better Tomorrow
+            Sustainable Wooden Toys from Ladakh
           </motion.h2>
           <motion.p 
             className="text-lg text-slate-600 dark:text-slate-400"
@@ -119,7 +119,7 @@ export default function ProductSection() {
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            Discover our collection of sustainable toys that combine fun, education, and environmental consciousness.
+            Discover our collection of handcrafted wooden toys that bring joy, learning, and environmental consciousness to every family.
           </motion.p>
         </motion.div>
 
@@ -176,7 +176,7 @@ export default function ProductSection() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: 0.1 }}
                     >
-                      Sustainable Toy Collection
+                      Handcrafted Wooden Toys
                     </motion.h3>
                     <motion.p 
                       className="text-slate-600 dark:text-slate-400 mb-6"
@@ -184,8 +184,8 @@ export default function ProductSection() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: 0.2 }}
                     >
-                      Our toys are crafted from eco-friendly materials, designed to inspire creativity while teaching
-                      important lessons about environmental conservation.
+                      Our toys are crafted by skilled artisans in Ladakh using sustainable walnut wood, 
+                      creating lasting memories while supporting local communities.
                     </motion.p>
                     <ul className="space-y-3 mb-8">
                       {features.toys.map((feature, index) => (
@@ -244,7 +244,7 @@ export default function ProductSection() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: 0.1 }}
                     >
-                      Educational Stories
+                      Educational Resources
                     </motion.h3>
                     <motion.p 
                       className="text-slate-600 dark:text-slate-400 mb-6"
@@ -252,8 +252,8 @@ export default function ProductSection() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: 0.2 }}
                     >
-                      Each toy comes with engaging stories that teach children about marine ecosystems and environmental
-                      conservation through fun and interactive narratives.
+                      Access our comprehensive library of eco-parenting guides, printable activities, 
+                      and environmental education materials to enhance your family's learning journey.
                     </motion.p>
                     <ul className="space-y-3 mb-8">
                       {features.stories.map((feature, index) => (
@@ -292,7 +292,7 @@ export default function ProductSection() {
                     >
                       <Button className="bg-gradient-to-r from-teal-600 to-emerald-500 hover:from-teal-700 hover:to-emerald-600 relative overflow-hidden group">
                         <span className="relative z-10 flex items-center">
-                          Read Our Stories
+                          Access Resources
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </span>
                         <motion.div
@@ -312,7 +312,7 @@ export default function ProductSection() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: 0.1 }}
                     >
-                      Environmental Impact
+                      Circular Economy Initiatives
                     </motion.h3>
                     <motion.p 
                       className="text-slate-600 dark:text-slate-400 mb-6"
@@ -320,8 +320,8 @@ export default function ProductSection() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: 0.2 }}
                     >
-                      Every purchase contributes to marine conservation efforts and helps reduce plastic waste in our
-                      oceans through sustainable practices and materials.
+                      Join our Toy Swap/Return Program to keep toys in circulation longer and reduce 
+                      environmental impact while supporting sustainable practices.
                     </motion.p>
                     <ul className="space-y-3 mb-8">
                       {features.impact.map((feature, index) => (
@@ -360,7 +360,7 @@ export default function ProductSection() {
                     >
                       <Button className="bg-gradient-to-r from-teal-600 to-emerald-500 hover:from-teal-700 hover:to-emerald-600 relative overflow-hidden group">
                         <span className="relative z-10 flex items-center">
-                          Learn About Our Impact
+                          Join Program
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </span>
                         <motion.div

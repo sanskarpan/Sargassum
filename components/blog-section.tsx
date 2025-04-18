@@ -10,25 +10,25 @@ import Link from "next/link"
 export default function BlogSection() {
   const blogPosts = [
     {
-      title: "The Future of AI in Storytelling",
-      description: "Explore how artificial intelligence is transforming the way we create and consume stories.",
+      title: "The Art of Sustainable Toy Making in Ladakh",
+      description: "Discover how our skilled artisans in Ladakh craft sustainable wooden toys using traditional techniques.",
       image: "/placeholder.jpg?height=400&width=600",
       date: "May 15, 2023",
-      author: "Alex Johnson",
+      author: "Rinzin Dorje",
     },
     {
-      title: "Creating Compelling Characters with AI",
-      description: "Learn how to use our platform to develop rich, nuanced characters for your stories.",
+      title: "Eco-Parenting: Raising Environmentally Conscious Children",
+      description: "Learn practical tips and activities to help your children develop a deep connection with nature.",
       image: "/placeholder.jpg?height=400&width=600",
       date: "June 2, 2023",
-      author: "Maya Patel",
+      author: "Sarah Chen",
     },
     {
-      title: "Environmental Storytelling Techniques",
-      description: "Discover how to craft immersive worlds that tell stories through their design and details.",
+      title: "The Sargasso Sea: Nature's Classroom",
+      description: "Explore how the mysteries of the Sargasso Sea inspire our educational toys and storytelling.",
       image: "/placeholder.jpg?height=400&width=600",
       date: "June 28, 2023",
-      author: "Carlos Rodriguez",
+      author: "Dr. James Wilson",
     },
   ]
 
@@ -42,9 +42,9 @@ export default function BlogSection() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Latest from Our Blog</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Learning & Inspiration</h2>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            Insights, tutorials, and updates from our team of storytelling experts.
+            Educational resources, eco-parenting tips, and stories from our community of sustainable toy makers.
           </p>
         </motion.div>
 
