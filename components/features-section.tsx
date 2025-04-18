@@ -12,33 +12,33 @@ export default function FeaturesSection() {
   const features = [
     {
       icon: <Leaf className="h-6 w-6 text-teal-600 dark:text-teal-400" />,
-      title: "Eco-Friendly Materials",
-      description: "Our toys are crafted from 100% sustainable materials, ensuring a safe and environmentally conscious play experience.",
+      title: "Sustainable Wooden Toys",
+      description: "Handcrafted from sustainable walnut wood in Ladakh, our toys are eco-friendly and built to last generations.",
     },
     {
       icon: <BookOpen className="h-6 w-6 text-teal-600 dark:text-teal-400" />,
-      title: "Educational Stories",
-      description: "Each toy comes with engaging stories that teach children about environmental conservation and marine ecosystems.",
+      title: "Educational Resources",
+      description: "Access our comprehensive library of eco-parenting guides, printable activities, and environmental education materials.",
     },
     {
       icon: <Heart className="h-6 w-6 text-teal-600 dark:text-teal-400" />,
-      title: "Intergenerational Play",
-      description: "Designed to bring families together through meaningful play and shared learning experiences.",
+      title: "Family Bonding",
+      description: "Our toys are designed to bring families together, creating meaningful connections through mindful play.",
+    },
+    {
+      icon: <Recycle className="h-6 w-6 text-teal-600 dark:text-teal-400" />,
+      title: "Circular Economy",
+      description: "Join our Toy Swap/Return Program to keep toys in circulation longer and reduce environmental impact.",
     },
     {
       icon: <Globe className="h-6 w-6 text-teal-600 dark:text-teal-400" />,
-      title: "Environmental Impact",
-      description: "Every purchase contributes to marine conservation efforts and reduces plastic waste in our oceans.",
+      title: "Environmental Education",
+      description: "Each toy comes with stories about nature, ecosystems, and our role in protecting the planet.",
     },
     {
       icon: <Users className="h-6 w-6 text-teal-600 dark:text-teal-400" />,
-      title: "Community Connection",
-      description: "Join a community of environmentally conscious families committed to sustainable living.",
-    },
-    {
-      icon: <Lightbulb className="h-6 w-6 text-teal-600 dark:text-teal-400" />,
-      title: "Innovative Design",
-      description: "Combining traditional play with modern technology to create engaging and educational experiences.",
+      title: "Artisan Community",
+      description: "Supporting over 50 local artisans in Ladakh, preserving traditional craftsmanship and cultural heritage.",
     },
   ]
 
@@ -83,7 +83,7 @@ export default function FeaturesSection() {
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            Playful Learning for a Sustainable Future
+            Crafting Sustainable Memories
           </motion.h2>
           <motion.p 
             className="text-lg text-slate-600 dark:text-slate-400"
@@ -92,8 +92,7 @@ export default function FeaturesSection() {
             viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            Our eco-friendly toys combine fun, education, and environmental awareness to create meaningful
-            experiences for children and families.
+            From the pristine landscapes of Ladakh to your home, our sustainable wooden toys bring joy, learning, and environmental consciousness to every family.
           </motion.p>
         </motion.div>
 
@@ -192,7 +191,7 @@ export default function FeaturesSection() {
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               <p className="text-slate-600 dark:text-slate-400">
-                Discover our collection of sustainable toys and educational resources
+                Explore our collection of handcrafted wooden toys and educational resources
               </p>
             </motion.div>
           </motion.div>

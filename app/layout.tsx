@@ -1,14 +1,21 @@
-import type React from "react"
+import type { Metadata } from "next"
+import { Inter, Playfair_Display } from "next/font/google"
 import "./globals.css"
-import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+})
 
-export const metadata = {
-  title: "Sargassum - Interactive AI Storytelling Platform",
-  description: "Create interactive comics and dynamic narratives with our AI-powered storytelling platform.",
-    generator: 'v0.dev'
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
+})
+
+export const metadata: Metadata = {
+  title: "Sargassum Play - Eco-Friendly Wooden Toys",
+  description: "Sustainable wooden toys crafted by artisans in Ladakh, designed for mindful play and environmental education.",
 }
 
 export default function RootLayout({
@@ -17,10 +24,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+      <body className="min-h-screen bg-background font-sans antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
+          <div className="relative flex min-h-screen flex-col">
+            <div className="flex-1">{children}</div>
+          </div>
         </ThemeProvider>
       </body>
     </html>
