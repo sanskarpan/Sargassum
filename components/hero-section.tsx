@@ -1,17 +1,13 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Sparkles, ArrowRight, MousePointerClick, BookOpen, PenTool, PlayCircle } from "lucide-react"
+import { ArrowRight, BookOpen } from "lucide-react"
 import Image from "next/image"
 
 export default function HeroSection() {
   const [currentStory, setCurrentStory] = useState(0)
-  const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 300], [0, 100])
-  const springY = useSpring(y, { stiffness: 100, damping: 30 })
-  const opacity = useTransform(scrollY, [0, 200], [1, 0])
   
   const stories = [
     "Crafting sustainable wooden toys from the heart of Ladakh",
@@ -29,11 +25,6 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center py-24 md:py-32 overflow-hidden">
-      <motion.div 
-        className="absolute inset-0 bg-gradient-to-b from-background/50 to-background pointer-events-none"
-        style={{ opacity }}
-      />
-      
       {/* Floating decorative elements */}
       <motion.div
         className="absolute top-20 left-10 w-20 h-20 rounded-full bg-primary/10"
@@ -78,7 +69,6 @@ export default function HeroSection() {
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
-                <BookOpen className="h-4 w-4 mr-2.5" />
               </motion.div>
               <span className="text-[15px]">Eco-Friendly Wooden Toys for Mindful Play</span>
             </motion.div>
@@ -135,7 +125,6 @@ export default function HeroSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="relative"
-            style={{ y: springY }}
           >
             <motion.div 
               className="relative z-10 rounded-2xl overflow-hidden shadow-2xl shadow-primary/20"

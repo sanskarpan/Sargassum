@@ -149,7 +149,6 @@ export default function ClimateEducation() {
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 >
-                  <Leaf className="h-6 w-6 text-teal-600 dark:text-teal-300 mb-2" />
                 </motion.div>
                 <h4 className="font-medium dark:text-slate-100">Eco-friendly Materials</h4>
                 <p className="text-sm text-slate-600 dark:text-slate-300">Sustainable wood and natural materials</p>
@@ -163,7 +162,6 @@ export default function ClimateEducation() {
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 >
-                  <BookOpen className="h-6 w-6 text-emerald-600 dark:text-emerald-300 mb-2" />
                 </motion.div>
                 <h4 className="font-medium dark:text-slate-100">Storytelling-driven</h4>
                 <p className="text-sm text-slate-600 dark:text-slate-300">Engaging narratives that teach</p>
@@ -177,7 +175,6 @@ export default function ClimateEducation() {
                   animate={{ rotate: [0, 360] }}
                   transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 >
-                  <Heart className="h-6 w-6 text-sky-600 dark:text-sky-300 mb-2" />
                 </motion.div>
                 <h4 className="font-medium dark:text-slate-100">Climate Awareness</h4>
                 <p className="text-sm text-slate-600 dark:text-slate-300">Building environmental consciousness</p>
